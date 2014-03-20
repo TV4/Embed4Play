@@ -4,14 +4,14 @@ Plugin Name: Embed4Play
 Plugin URI: http://github.com/TV4/Embed4Play
 Description: Publish video clips from Swedish TV channels on a Wordpress blog
 Author: David Hall (TV4 AB)
-Version: 0.0.2
+Version: 0.0.3
 Author URI: http://http.tv4.se/
 License: GPL2
 */
 
 /*
  *  Embed4Play, Wordpress plugin to automatically make posts with TV4Play embeds.
- *  Copyright (C) 2010 TV4 AB
+ *  Copyright (C) 2010, 2014 TV4 AB
  *
  *
  *
@@ -148,7 +148,7 @@ function shortcode_kanal5($atts, $content=null) {
 }
 
 
-return '<object id="flashObj" width="'.$width.'" height="'.$height.'" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,47,0"><param name="movie" value="http://c.brightcove.com/services/viewer/federated_f9?isSlim=1" /><param name="bgcolor" value="#FFFFFF" /><param name="flashVars" value="videoId='.$id.'&playerID=68226258001&playerKey=AQ~~,AAAABUmivxk~,SnCsFJuhbr0O790OdBzSy64LLzE3A9J1&domain=embed&dynamicStreaming=true" /><param name="base" value="http://admin.brightcove.com" /><param name="seamlesstabbing" value="false" /><param name="allowFullScreen" value="true" /><param name="swLiveConnect" value="true" /><param name="allowScriptAccess" value="always" /><embed src="http://c.brightcove.com/services/viewer/federated_f9?isSlim=1" bgcolor="#FFFFFF" flashVars="videoId='.$id.'&playerID=68226258001&playerKey=AQ~~,AAAABUmivxk~,SnCsFJuhbr0O790OdBzSy64LLzE3A9J1&domain=embed&dynamicStreaming=true" base="http://admin.brightcove.com" name="flashObj" width="'.$width.'" height="'.$height.'" seamlesstabbing="false" type="application/x-shockwave-flash" allowFullScreen="true" swLiveConnect="true" allowScriptAccess="always" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></embed></object>';
+return '<iframe width="'.$width.'" height="'.$height.'" src="http://www.kanal5play.se/embed/'.$id.'" frameborder="0" scrolling="no" allowFullScreen></iframe>';
 
 }
 
@@ -176,8 +176,7 @@ function shortcode_svt($atts, $content=null) {
         break;
 }
 
-
-return '<object width="'.$width.'" height="'.$height.'"><param name="movie" value="http://svt.se/embededflash/'.$id.'/play.swf"></param><param name="wmode" value="transparent"></param><param name="allowfullscreen" value="true"></param><param name="allowScriptAccess" value="sameDomain"></param><embed src="http://svt.se/embededflash/'.$id.'/play.swf" type="application/x-shockwave-flash" wmode="transparent" allowfullscreen="true" allowScriptAccess="sameDomain" width="'.$width.'" height="'.$height.'"></embed></object>';
+return '<iframe src="http://www.svtplay.se/klipp/'.$id.'?type=embed&external=true" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no"></iframe>';
 }
 
 
@@ -203,7 +202,7 @@ return '<object width="'.$width.'" height="'.$height.'"><param name="movie" valu
         $height=360;
         break;
 }
-                return '<object width="'.$width.'" height="'.$height.'" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="tv4play_'.$id.'"><param name="movie" value="http://embed.tv4.se/tv4play/v0/tv4video.swf?vid='.$id.'"></param><param name="allowfullscreen" value="true"></param><param name="allowScriptAccess" value="always"></param><param name="base" value="http://embed.tv4.se/tv4play/v0/"></param><embed src="http://embed.tv4.se/tv4play/v0/tv4video.swf?vid='.$id.'" type="application/x-shockwave-flash" allowfullscreen="true" base="http://embed.tv4.se/tv4play/v0/" allowScriptAccess="always" width="'.$width.'" height="'.$height.'"></embed><a href="http://www.tv4play.se/search?text='.$id.'&utm_medium=sharing&utm_source=embed&utm_name=tv4play.se" target="_blank">Se videon på TV4 Play</a></object>';
+                return '<iframe src="http://www.tv4play.se/iframe/video/'.$id.'?width='.$width.'&height='.$height.'&starttime=0" width="'.$width.'" height="'.$height.'" scrolling="no" frameborder="no"></iframe>';
 
     }
 }
